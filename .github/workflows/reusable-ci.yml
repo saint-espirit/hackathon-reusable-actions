@@ -27,7 +27,6 @@ on:
 
 permissions:
   contents: read
-  # pull-requests: write # uncomment if you need PR annotations from tools
 
 jobs:
   unit-test:
@@ -117,7 +116,6 @@ jobs:
           fi
 
   code-analysis:
-    # Run Sonar when enabled AND (either jacoco is disabled OR quality-gate passed)
     if: ${{ inputs.enable_sonar && ( !inputs.enable_jacoco || needs.quality-gate.result == 'success' ) }}
     needs: [unit-test, quality-gate]
     runs-on: ubuntu-latest
