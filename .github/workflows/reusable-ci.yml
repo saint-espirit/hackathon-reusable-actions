@@ -44,6 +44,11 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
+      - name: Install OpenCV
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libopencv-dev
+
       - name: Run tests (no coverage)
         if: ${{ !inputs.enable_jacoco }}
         run: mvn -B -ntp test
